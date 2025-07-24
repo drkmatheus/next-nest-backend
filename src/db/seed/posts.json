@@ -1,0 +1,76 @@
+{
+  "posts": [
+    {
+      "id": "a1b2c3d4-e5f6-4789-9abc-def012345678",
+      "title": "X: O Legado do Blue Bomber",
+      "slug": "x-o-legado-do-blue-bomber",
+      "excerpt": "Conheça a história e a evolução de X, o protagonista da série Mega Man X.",
+      "content": "X, a culminação da genialidade do Dr. Light, é um Reploid de última geração imbuído de um sistema de pensamento livre, uma inovação audaciosa que lhe confere a capacidade de tomar decisões autônomas e evoluir constantemente. Essa característica revolucionária, embora promissora, carrega consigo um dilema complexo: o potencial para se desviar de sua programação original e representar uma ameaça para a humanidade. Ciente desse risco inerente, o Dr. Light o selou em uma cápsula de diagnóstico por um período de mais de 30 anos, um tempo crucial para monitorar e validar a segurança e estabilidade de seu avançado sistema. Descoberto acidentalmente por Dr. Cain, um renomado cientista, a tecnologia de X desencadeou uma nova era na criação de Reploids, impulsionando avanços sem precedentes. No entanto, essa mesma tecnologia também inadvertidamente desencadeou a crise Maverick, um período de caos e destruição onde Reploids, antes pacíficos, se rebelaram contra seus criadores humanos, pondo em risco a ordem estabelecida. Diante dessa ameaça iminente, X, relutantemente, assume o papel de Maverick Hunter, um defensor da humanidade encarregado de combater os Mavericks e restaurar a paz. Essa jornada o força a confrontar o peso de sua própria existência, a natureza da livre escolha e a responsabilidade de proteger aqueles que ele jurou defender, mesmo que isso signifique lutar contra seus semelhantes.",
+      "coverImageUrl": "/images/MegaManX.png",
+      "published": true,
+      "createdAt": "2025-05-15T10:00:00.000Z",
+      "updatedAt": "2025-05-16T14:30:00.000Z",
+      "author": "Dr. Light"
+    },
+    {
+      "id": "b9876543-21dc-40ba-8fed-9876543210ab",
+      "title": "Zero: O Enigma Vermelho",
+      "slug": "zero-o-enigma-vermelho",
+      "excerpt": "Explore o passado misterioso e o poder inigualável de Zero, o Maverick Hunter.",
+      "content": "Zero, a criação suprema do Dr. Wily, é um Reploid envolto em um véu de mistério e dotado de um poder incalculável. Ao contrário dos Reploids convencionais, Zero carrega em seu código genético o Vírus Maverick, um elemento instável que detém o potencial de transformá-lo em uma ameaça para a humanidade. Essa dualidade entre sua programação original e a influência do vírus Maverick o atormenta constantemente, forçando-o a lutar contra sua própria natureza. Apesar de sua origem sinistra, Zero demonstra uma determinação inabalável em resistir à influência do Vírus Maverick e se junta aos Maverick Hunters, dedicando-se a proteger o mundo dos perigos representados pelos Mavericks. Sua maestria com a espada Z-Saber, combinada com sua agilidade e velocidade em combate, o transformam em um dos guerreiros mais temidos e respeitados da série. Ao longo de sua jornada, Zero busca incessantemente redimir seu passado obscuro e encontrar um propósito genuíno em sua existência, mesmo carregando o fardo de sua criação e o constante risco de sucumbir ao Vírus Maverick. Sua luta interna e sua busca por redenção o tornam um personagem complexo e cativante.",
+      "coverImageUrl": "/images/Zero.png",
+      "published": true,
+      "createdAt": "2025-04-22T15:45:00.000Z",
+      "updatedAt": "2025-04-25T09:12:00.000Z",
+      "author": "Dr. Wily"
+    },
+    {
+      "id": "c1234567-89ab-4cde-f012-34567890abcd",
+      "title": "Axl: O Novo Maverick Hunter",
+      "slug": "axl-o-novo-maverick-hunter",
+      "excerpt": "Descubra as habilidades únicas de Axl e sua importância na luta contra os Mavericks.",
+      "content": "Axl, um Reploid de nova geração, ostenta uma habilidade singular e extraordinária: a capacidade de copiar o DNA de outros Reploids e se transformar em suas formas. Essa capacidade metamórfica o transforma em um trunfo valioso na luta contra os Mavericks, permitindo que ele se infiltre em suas bases secretas, colete informações cruciais e desestabilize suas operações. No entanto, o poder de Axl também o torna um alvo cobiçado, com muitos indivíduos e organizações buscando controlar ou explorar sua habilidade para fins egoístas e nefastos. Ao se juntar a X e Zero, Axl encontra um lar seguro e um propósito claro em sua vida, lutando ao lado de seus companheiros para proteger o mundo e aprimorar o domínio de seus poderes únicos. Ao mesmo tempo, ele enfrenta as incertezas de seu próprio futuro, questionando a natureza de sua existência e a responsabilidade inerente à sua habilidade excepcional. Sua jornada é marcada por desafios, descobertas e a busca constante por autoconhecimento.",
+      "coverImageUrl": "/images/Axl.png",
+      "published": true,
+      "createdAt": "2025-06-01T08:20:00.000Z",
+      "updatedAt": "2025-06-03T17:55:00.000Z",
+      "author": "Red Alert"
+    },
+    {
+      "id": "d8765432-10ef-4bca-9def-fedcba987654",
+      "title": "Sigma: O Vilão Icônico",
+      "slug": "sigma-o-vilao-iconico",
+      "excerpt": "Relembre a ascensão de Sigma e seu plano para dominar o mundo com os Mavericks.",
+      "content": "Sigma, outrora o comandante honrado dos Maverick Hunters, um símbolo de ordem e justiça, sucumbe ao Vírus Maverick e se transforma na maior ameaça para a humanidade e para os Reploids que se opõem à sua visão distorcida. Sua mente estratégica brilhante e seu poder em combate incomparável o transformam em um oponente formidável, capaz de manipular eventos complexos e reunir um exército de Mavericks para concretizar seu plano ambicioso de dominação global. A motivação central de Sigma reside em sua crença inabalável de que os Reploids representam uma forma de vida superior aos humanos e, portanto, merecem governar o planeta. Essa convicção o leva a cometer atrocidades indescritíveis e a desafiar os princípios fundamentais da justiça, da igualdade e da coexistência pacífica. Sua transformação de herói em vilão o consagra como um dos antagonistas mais icônicos e memoráveis da história dos videogames, um exemplo sombrio dos perigos do fanatismo e da busca desmedida por poder.",
+      "coverImageUrl": "/images/Sigma.png",
+      "published": true,
+      "createdAt": "2025-03-10T12:30:00.000Z",
+      "updatedAt": "2025-03-12T21:00:00.000Z",
+      "author": "Vile"
+    },
+    {
+      "id": "e5432109-bacd-4e21-8765-432109876543",
+      "title": "Vile: O Rival Implacável",
+      "slug": "vile-o-rival-implacavel",
+      "excerpt": "Acompanhe a história de Vile, o Maverick que nutre um ódio profundo por X e busca vingança.",
+      "content": "Vile, um Reploid imponente e implacável, é consumido por um ódio profundo e obsessivo por X, alimentado por uma rivalidade intensa e um desejo insaciável de provar sua superioridade. Equipado com um arsenal diversificado de armas poderosas e armaduras personalizadas, Vile se torna um dos inimigos mais persistentes e desafiadores de X, sempre buscando uma oportunidade para confrontá-lo e infligir-lhe a derrota. Sua obsessão por X o leva a cometer atos de violência e destruição indiscriminada, colocando em risco a vida de inúmeros inocentes e desestabilizando a ordem mundial. Vile personifica a busca implacável por vingança e a obsessão desmedida por poder, ilustrando o lado sombrio da rivalidade e as consequências devastadoras da ambição descontrolada.",
+      "coverImageUrl": "/images/Vile1.png",
+      "published": true,
+      "createdAt": "2025-04-01T09:00:00.000Z",
+      "updatedAt": "2025-04-03T11:15:00.000Z",
+      "author": "Sigma"
+    },
+    {
+      "id": "f7g8h9i0-j1k2-4l5m-n6o7-p8q9r0s1t2u3",
+      "title": "Mega Man X: Guia Completo de Armaduras",
+      "slug": "mega-man-x-guia-completo-de-armaduras",
+      "excerpt": "Um guia detalhado sobre todas as armaduras de Mega Man X, seus upgrades e como obtê-las.",
+      "content": "# Guia Completo das Armaduras de Mega Man X\n\nEste guia abrange todas as armaduras que X pode adquirir ao longo da série Mega Man X, detalhando suas habilidades, upgrades e como obtê-las.\n\n## Armadura Inicial (Sem Armadura)\n\n*   **Habilidades:** Tiro simples, dash.\n*   **Obtenção:** Disponível desde o início do jogo.\n\n![Mega Man X Sem Armadura](/images/MegaManX_SemArmadura.png)\n\n## First Armor\n\n*   **Habilidades:** Arm Parts, Body Parts, Head Parts, Foot Parts\n*   **Obtenção:** Capsule\n\n### Arm Parts\n\n| Part  | Description                                  |\n| :---- | :------------------------------------------- |\n| Buster | Allows to charge Buster faster.               |\n|        | Allows to charge special buster twice longer |\n\n### Body Parts\n\n| Part             | Description                                                         |\n| :--------------- | :------------------------------------------------------------------ |\n| Body             | Reduce damage received by half.                                     |\n| Life Recovery    | Allows you to collect additional life when take a Life Up.         |\n| Hyper Armor      | Prevents X from flinching when he takes damage.                     |\n| Giga Attack -X1- | A powerful screen-clearing attack that consumes all weapon energy. |\n\n### Head Parts\n\n| Part  | Description                                                    |\n| :---- | :------------------------------------------------------------- |\n| Head  | Makes possible to dash while crouching.                        |\n|        | Allows to break certain blocks with your head while dashing. |\n\n### Foot Parts\n\n| Part             | Description                                                       |\n| :--------------- | :---------------------------------------------------------------- |\n| Foot             | Allow to perform the dash.                                        |\n| Air Dash         | Allow to dash in the air.                                         |\n| Hover            | Allow to stay floating for a moment in the air.                  |\n| Wall Kick        | Allows X to jump off walls after a dash.                          |\n| First Armor Boot | Allow X to quickly jump to the wall in a Wall Kick.               |\n\n## Second Armor\n\n*   **Habilidades:** Arm Parts, Body Parts, Head Parts, Foot Parts\n*   **Obtenção:** Capsule\n\n### Arm Parts\n\n| Part  | Description                                  |\n| :---- | :------------------------------------------- |\n| Buster | Allows to charge Buster faster.               |\n|        | Allows to charge special buster twice longer |\n\n### Body Parts\n\n| Part             | Description                                                         |\n| :--------------- | :------------------------------------------------------------------ |\n| Body             | Reduce damage received by half.                                     |\n| Life Recovery    | Allows you to collect additional life when take a Life Up.         |\n| Hyper Armor      | Prevents X from flinching when he takes damage.                     |\n| Giga Attack -X2- | A powerful screen-clearing attack that consumes all weapon energy. |\n\n### Head Parts\n\n| Part  | Description                                                    |\n| :---- | :------------------------------------------------------------- |\n| Head  | Makes possible to dash while crouching.                        |\n|        | Allows to break certain blocks with your head while dashing. |\n\n### Foot Parts\n\n| Part             | Description                                                       |\n| :--------------- | :---------------------------------------------------------------- |\n| Foot             | Allow to perform the dash.                                        |\n| Air Dash         | Allow to dash in the air.                                         |\n| Hover            | Allow to stay floating for a moment in the air.                  |\n| Wall Kick        | Allows X to jump off walls after a dash.                          |\n| Second Armor Boot | Allow X to quickly jump to the wall in a Wall Kick.               |\n\n## Third Armor\n\n*   **Habilidades:** Arm Parts, Body Parts, Head Parts, Foot Parts\n*   **Obtenção:** Capsule\n\n### Arm Parts\n\n| Part  | Description                                  |\n| :---- | :------------------------------------------- |\n| Buster | Allows to charge Buster faster.               |\n|        | Allows to charge special buster twice longer |\n\n### Body Parts\n\n| Part             | Description                                                         |\n| :--------------- | :------------------------------------------------------------------ |\n| Body             | Reduce damage received by half.                                     |\n| Life Recovery    | Allows you to collect additional life when take a Life Up.         |\n| Hyper Armor      | Prevents X from flinching when he takes damage.                     |\n| Giga Attack -X3- | A powerful screen-clearing attack that consumes all weapon energy. |\n\n### Head Parts\n\n| Part  | Description                                                    |\n| :---- | :------------------------------------------------------------- |\n| Head  | Makes possible to dash while crouching.                        |\n|        | Allows to break certain blocks with your head while dashing. |\n\n### Foot Parts\n\n| Part             | Description                                                       |\n| :--------------- | :---------------------------------------------------------------- |\n| Foot             | Allow to perform the dash.                                        |\n| Air Dash         | Allow to dash in the air.                                         |\n| Hover            | Allow to stay floating for a moment in the air.                  |\n| Wall Kick        | Allows X to jump off walls after a dash.                          |\n| Third Armor Boot  | Allow X to quickly jump to the wall in a Wall Kick.               |\n\n## Conclusão\n\nCom este guia, você estará preparado para dominar as armaduras de Mega Man X e enfrentar qualquer desafio que surgir!\n",
+      "coverImageUrl": "/images/MegaManX.png",
+      "published": true,
+      "createdAt": "2025-06-20T14:00:00.000Z",
+      "updatedAt": "2025-06-22T10:30:00.000Z",
+      "author": "Dr. Cain"
+    }
+  ]
+}
