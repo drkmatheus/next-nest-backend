@@ -4,8 +4,10 @@ import {
   UserSchema,
   UserSchemaDto,
 } from "@/lib/user/schemas";
+import { apiRequest } from "@/utils/api-request";
 import { getZodErrorMessages } from "@/utils/get-zod-errors";
 import { simulateLag } from "@/utils/simulate-lag";
+import { redirect } from "next/navigation";
 
 type CreateUserActionState = {
   user: UserSchemaDto;
@@ -37,10 +39,21 @@ export async function createUserAction(
     };
   }
 
-  // Aqui vai vir o fetch da api
-  return {
-    user: state.user,
-    errors: [],
-    success: true,
-  };
+  const createResponse = await apiRequest<UserSchemaDto>("/user", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(parsedForm.data),
+  });
+
+  if (!createResponse.success) {
+    return {
+      user: UserSchema.parse(formObj),
+      errors: createResponse.errors,
+      success: createResponse.success,
+    };
+  }
+
+  redirect("/login?created=1");
 }

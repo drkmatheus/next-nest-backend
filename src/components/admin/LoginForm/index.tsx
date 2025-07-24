@@ -4,6 +4,7 @@ import { Button } from "@/components/Button";
 import { InputText } from "@/components/InputText";
 import clsx from "clsx";
 import { LoaderPinwheelIcon, LogInIcon } from "lucide-react";
+import Link from "next/link";
 import { useActionState, useEffect } from "react";
 import { toast } from "react-toastify";
 
@@ -52,6 +53,12 @@ export function LoginForm() {
           )}
           Entrar
         </Button>
+
+        <p className="text-sm/tight hover:underline">
+          <Link href="user/new">
+            Não possui uma conta? Clique aqui para criar uma
+          </Link>
+        </p>
         {!!state.error && <p className="text-red-500">{state.error}</p>}
       </form>
     </div>
