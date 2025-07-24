@@ -1,12 +1,31 @@
 "use client";
 
-import { UserIcon } from "lucide-react";
+import { LoaderPinwheelIcon, UserIcon } from "lucide-react";
 import { Button } from "../Button";
 import { InputText } from "../InputText";
 import Link from "next/link";
 import clsx from "clsx";
+import { useActionState, useEffect } from "react";
+import { createUserAction } from "@/actions/user/create-user-action";
+import { UserSchema } from "@/lib/user/schemas";
+import { toast } from "react-toastify";
 
 export function CreateUserForm() {
+  const [state, action, isPending] = useActionState(createUserAction, {
+    user: UserSchema.parse({}),
+    errors: [],
+    success: false,
+  });
+
+  useEffect(() => {
+    toast.dismiss();
+    if (state.errors.length > 0) {
+      state.errors.forEach((error) => {
+        toast.error(error);
+      });
+    }
+  }, [state]);
+
   return (
     <div
       className={clsx(
@@ -14,14 +33,14 @@ export function CreateUserForm() {
         "text-center max-w-sm mx-auto mt-16 mb-32"
       )}
     >
-      <form action={""} className="flex flex-col flex-1 gap-5">
+      <form action={action} className="flex flex-col flex-1 gap-5">
         <InputText
           type="text"
           name="name"
           labelText="Nome"
           placeholder="Digite seu nome"
-          defaultValue={""}
-          disabled={false}
+          defaultValue={state.user.name}
+          disabled={isPending}
           required
         />
         <InputText
@@ -29,8 +48,8 @@ export function CreateUserForm() {
           name="email"
           labelText="Email"
           placeholder="Digite seu email"
-          defaultValue={""}
-          disabled={false}
+          defaultValue={state.user.email}
+          disabled={isPending}
           required
         />
         <InputText
@@ -38,7 +57,7 @@ export function CreateUserForm() {
           name="password"
           labelText="Senha"
           placeholder="Digite sua senha"
-          disabled={false}
+          disabled={isPending}
           required
         />
         <InputText
@@ -46,11 +65,15 @@ export function CreateUserForm() {
           name="password2"
           labelText="Repita sua senha"
           placeholder="Digite sua senha novamente"
-          disabled={false}
+          disabled={isPending}
           required
         />
-        <Button disabled={false} type="submit" className="mt-4">
-          <UserIcon />
+        <Button disabled={isPending} type="submit" className="mt-4">
+          {!isPending ? (
+            <UserIcon />
+          ) : (
+            <LoaderPinwheelIcon className="animate-spin" />
+          )}
           Criar conta
         </Button>
         <p className="text-sm/tight hover:underline">
