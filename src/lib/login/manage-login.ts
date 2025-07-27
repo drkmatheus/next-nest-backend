@@ -41,6 +41,19 @@ export async function createLoginSession(username: string) {
   });
 }
 
+export async function createLoginSessionFromApi(jwt: string) {
+  const expiresAt = new Date(Date.now() + loginExpirationSeconds * 1000);
+  const loginSession = jwt;
+  const cookieStore = await cookies();
+
+  cookieStore.set(loginCookieName, loginSession, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "strict",
+    expires: expiresAt,
+  });
+}
+
 export async function deleteLoginSession() {
   const cookieStore = await cookies();
   cookieStore.set(loginCookieName, "", { expires: new Date(0) });
@@ -74,6 +87,24 @@ export async function getLoginSession() {
   if (!jwt) return false;
 
   return verifyJwt(jwt);
+}
+
+export async function getLoginSessionFromApi() {
+  const cookieStore = await cookies();
+
+  const jwt = cookieStore.get(loginCookieName)?.value;
+
+  if (!jwt) return false;
+
+  return jwt;
+}
+
+export async function requireLoginSessionForApiOrRedirect() {
+  const isAuthenticated = await getLoginSessionFromApi();
+
+  if (!isAuthenticated) {
+    redirect("/login");
+  }
 }
 
 export async function checkLoginSession() {

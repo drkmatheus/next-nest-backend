@@ -1,6 +1,5 @@
-import { LoginForm } from "@/components/admin/LoginForm";
+import { LoginForm } from "@/components/LoginForm";
 import { ErrorMessage } from "@/components/ErrorMessage";
-import clsx from "clsx";
 import { Metadata } from "next";
 export const dynamic = "force-dynamic";
 

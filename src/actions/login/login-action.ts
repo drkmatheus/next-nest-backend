@@ -1,15 +1,11 @@
 "use server";
 
+import { createLoginSessionFromApi } from "@/lib/login/manage-login";
 import { LoginSchema } from "@/lib/login/schemas";
-import {
-  CreateUserSchema,
-  UserSchema,
-  UserSchemaDto,
-} from "@/lib/user/schemas";
 import { apiRequest } from "@/utils/api-request";
 import { getZodErrorMessages } from "@/utils/get-zod-errors";
 import { simulateLag } from "@/utils/simulate-lag";
-import { success } from "zod";
+import { redirect } from "next/navigation";
 
 type LoginActionState = {
   email: string;
@@ -46,16 +42,13 @@ export async function loginAction(state: LoginActionState, formData: FormData) {
     };
   }
 
-  const loginResponse = await apiRequest<{ accessToken: string }>(
-    "/auth/login",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(parsedForm.data),
-    }
-  );
+  const loginResponse = await apiRequest<{ signJwt: string }>("/auth/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(parsedForm.data),
+  });
 
   if (!loginResponse.success) {
     return {
@@ -66,11 +59,15 @@ export async function loginAction(state: LoginActionState, formData: FormData) {
 
   console.log(loginResponse.data);
 
-  // await createLoginSession(email);
-  // redirect("/admin/post");
+  await createLoginSessionFromApi(loginResponse.data.signJwt);
+  console.log(
+    "Resposta completa da API:",
+    JSON.stringify(loginResponse, null, 2)
+  );
 
-  return {
-    email: formEmail,
-    errors: ["Success"],
-  };
+  redirect("/admin/post");
+  // return {
+  //   email: formEmail,
+  //   errors: [],
+  // };
 }
