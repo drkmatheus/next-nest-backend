@@ -1,6 +1,6 @@
 import { MyLoader } from "@/components/MyLoader";
 import { SinglePost } from "@/components/SinglePost";
-import { findPostBySlug } from "@/lib/post/queries/public";
+import { findPublicPostsBySlugFromApi } from "@/lib/post/queries/public";
 import { Metadata } from "next";
 import { Suspense } from "react";
 
@@ -13,7 +13,13 @@ export async function generateMetadata({
 }: PostSlugPageProps): Promise<Metadata> {
   const { slug } = await params;
 
-  const post = await findPostBySlug(slug);
+  const postRes = await findPublicPostsBySlugFromApi(slug);
+
+  if (!postRes.success) {
+    return {};
+  }
+
+  const post = postRes.data;
 
   return {
     title: post.title,

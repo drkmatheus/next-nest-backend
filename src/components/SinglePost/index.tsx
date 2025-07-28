@@ -1,16 +1,23 @@
-import { findPostBySlug } from "@/lib/post/queries/public";
+import { findPublicPostsBySlugFromApi } from "@/lib/post/queries/public";
 import Image from "next/image";
 import { PostHeading } from "../PostHeading";
 import { PostFormattedDate } from "../PostFormattedDate";
 import clsx from "clsx";
 import { MarkdownRenderer } from "../MarkdownRenderer";
+import { notFound } from "next/navigation";
 
 type SinglePostProps = {
   slug: string;
 };
 
 export async function SinglePost({ slug }: SinglePostProps) {
-  const post = await findPostBySlug(slug);
+  const postRes = await findPublicPostsBySlugFromApi(slug);
+
+  if (!postRes.success) {
+    notFound();
+  }
+
+  const post = postRes.data;
 
   return (
     <article className="mb-10">
@@ -25,7 +32,7 @@ export async function SinglePost({ slug }: SinglePostProps) {
 
         <PostHeading url={`/post/${post.slug}`}>{post.title}</PostHeading>
         <p>
-          {post.author} | {<PostFormattedDate dateTime={post.createdAt} />}
+          {post.author.name} | {<PostFormattedDate dateTime={post.createdAt} />}
         </p>
       </header>
       <p className={clsx("text-xl mb-8")}>{post.excerpt}</p>

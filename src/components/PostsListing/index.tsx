@@ -1,15 +1,22 @@
 import { PostCoverImage } from "../PostCoverImage";
 import { PostSummary } from "../PostSummary";
-import { findAllPublicPosts } from "@/lib/post/queries/public";
+import { findAllPublicPostsFromApi } from "@/lib/post/queries/public";
 
 // Como aqui tem coisa que pode demorar a renderizar, foi separado do código principal, para usar o Suspense
 // do react para carregar apenas um componente do layout.
 
 export async function PostListing() {
-  const posts = await findAllPublicPosts();
+  const postsRes = await findAllPublicPostsFromApi();
 
-  if (posts.length <= 1) return null;
+  if (!postsRes.success) {
+    return null;
+  }
 
+  const posts = postsRes.data;
+
+  if (posts.length <= 1) {
+    return null;
+  }
   return (
     <div className="grid grid-cols-1 gap-4  sm:grid-cols-2 lg:grid-cols-3">
       {posts.slice(1).map((post) => {

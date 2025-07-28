@@ -1,19 +1,26 @@
 import clsx from "clsx";
 import { PostCoverImage } from "../PostCoverImage";
 import { PostSummary } from "../PostSummary";
-import { findAllPublicPosts } from "@/lib/post/queries/public";
+import { findAllPublicPostsFromApi } from "@/lib/post/queries/public";
 import { ErrorMessage } from "../ErrorMessage";
 
 export async function FeaturedPost() {
-  const posts = await findAllPublicPosts();
+  const postRes = await findAllPublicPostsFromApi();
+  const noPostFound = (
+    <ErrorMessage
+      contentTitle="Atenção!🐣"
+      content="Nenhum post foi encontrado"
+    />
+  );
+
+  if (!postRes.success) {
+    return noPostFound;
+  }
+
+  const posts = postRes.data;
 
   if (posts.length <= 0) {
-    return (
-      <ErrorMessage
-        contentTitle="Atenção!🐣"
-        content="Nenhum post foi encontrado"
-      />
-    );
+    return noPostFound;
   }
 
   const post = posts[0];
