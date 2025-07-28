@@ -1,6 +1,7 @@
 "use server";
 
-import { checkLoginSession } from "@/lib/login/manage-login";
+import { getLoginSessionFromApi } from "@/lib/login/manage-login";
+import { authenticatedApiRequest } from "@/utils/authenticated-api-request";
 import { mkdir, writeFile } from "fs/promises";
 import { extname, resolve } from "path";
 
@@ -19,7 +20,7 @@ export async function uploadImageAction(
     return { url, error };
   };
 
-  const isAuthenticated = await checkLoginSession();
+  const isAuthenticated = await getLoginSessionFromApi();
 
   if (!isAuthenticated) {
     return result({ error: "Faça login novamente" });
@@ -45,23 +46,16 @@ export async function uploadImageAction(
     return result({ error: "Arquivo inválido" });
   }
 
-  const fileExtension = extname(file.name);
-  const uniqueImageName = `${Date.now()}${fileExtension}`;
+  const uploadRes = await authenticatedApiRequest<{ url: string }>(`/upload`, {
+    method: "POST",
+    body: formData,
+  });
 
-  const uploadDir = process.env.IMG_UPLOAD_DIR || "uploads";
-  const uploadFolderPath = resolve(process.cwd(), "public", uploadDir);
-  await mkdir(uploadFolderPath, { recursive: true });
+  if (!uploadRes.success) {
+    return result({ error: uploadRes.errors[0] });
+  }
 
-  const fileArrayBuffer = await file.arrayBuffer();
-  const buffer = Buffer.from(fileArrayBuffer);
-
-  const fullPath = resolve(uploadFolderPath, uniqueImageName);
-
-  writeFile(fullPath, buffer);
-
-  const imgServerUrl =
-    process.env.IMG_SERVER_URL || "http://localhost:3000/uploads";
-  const url = `${imgServerUrl}/${uniqueImageName}`;
+  const url = `${process.env.IMG_SERVER_URL}${uploadRes.data.url}`;
 
   return result({ url });
 }
