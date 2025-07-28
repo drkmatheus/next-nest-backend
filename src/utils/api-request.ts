@@ -22,7 +22,7 @@ export async function apiRequest<T>(
     const res = await fetch(url, options);
     const json = await res.json().catch(() => null);
 
-    if (!res.ok) {
+    if (!res.ok || json?.response?.statusCode >= 400) {
       const errors = Array.isArray(json?.message)
         ? json.message
         : [json?.message || "Erro inesperado"];

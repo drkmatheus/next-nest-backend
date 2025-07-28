@@ -56,7 +56,7 @@ export function LoginForm() {
     >
       <form action={action} className="flex flex-col flex-1 gap-5">
         <InputText
-          type="text"
+          type="email"
           name="email"
           labelText="Email"
           placeholder="Seu email"
