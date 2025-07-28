@@ -1,18 +1,30 @@
 "use client";
+import { updateUserAction } from "@/actions/user/update-user-action";
 import { Button } from "@/components/Button";
 import { DeletePostModal } from "@/components/DeletePostModal";
 import { InputText } from "@/components/InputText";
+import { UserSchemaDto } from "@/lib/user/schemas";
 import { simulateLag } from "@/utils/simulate-lag";
 import clsx from "clsx";
 import { LockKeyholeIcon, RefreshCcwDotIcon, XSquareIcon } from "lucide-react";
 import Link from "next/link";
-import { startTransition, useState, useTransition } from "react";
+import { useActionState, useEffect, useState, useTransition } from "react";
+import { toast } from "react-toastify";
 
-export function UpdateUserForm() {
+type UpdateUserFormProps = {
+  user: UserSchemaDto;
+};
+
+export function UpdateUserForm({ user }: UpdateUserFormProps) {
+  const [state, action, isPending] = useActionState(updateUserAction, {
+    user,
+    errors: [],
+    success: false,
+  });
   const [isModalVisible, setIsVisible] = useState(false);
   const [isTransitioning, startTransition] = useTransition();
   const safetyDelay = 10000;
-  const isElementDisabled = isTransitioning;
+  const isElementDisabled = isTransitioning || isPending;
 
   function showDeleteAccountModal(
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -26,6 +38,16 @@ export function UpdateUserForm() {
   }
 
   function handleDeleteUser() {}
+
+  useEffect(() => {
+    toast.dismiss();
+    if (state.errors.length > 0) {
+      state.errors.forEach((error) => toast.error(error));
+    }
+    if (state.success) {
+      toast.success("Atualizado com sucesso");
+    }
+  }, [state]);
   return (
     <div
       className={clsx(
@@ -33,14 +55,14 @@ export function UpdateUserForm() {
         "text-center max-w-sm mt-16 mb-32 mx-auto"
       )}
     >
-      <form action="" className="flex flex-col flex-1 gap-6">
+      <form action={action} className="flex flex-col flex-1 gap-6">
         <InputText
           labelText="Nome"
           type="text"
           name="name"
           placeholder="Seu nome"
           disabled={isElementDisabled}
-          defaultValue={""}
+          defaultValue={state.user.name}
         />
         <InputText
           labelText="E-mail"
@@ -48,7 +70,7 @@ export function UpdateUserForm() {
           name="email"
           placeholder="Seu email"
           disabled={isElementDisabled}
-          defaultValue={""}
+          defaultValue={state.user.email}
         />
         <Button>
           {" "}

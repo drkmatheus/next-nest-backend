@@ -6,7 +6,6 @@ import {
 } from "@/lib/user/schemas";
 import { apiRequest } from "@/utils/api-request";
 import { getZodErrorMessages } from "@/utils/get-zod-errors";
-import { simulateLag } from "@/utils/simulate-lag";
 import { verifyHoneypotInput } from "@/utils/verify-honeypot-input";
 import { redirect } from "next/navigation";
 
