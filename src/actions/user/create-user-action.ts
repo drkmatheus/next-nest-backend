@@ -7,6 +7,7 @@ import {
 import { apiRequest } from "@/utils/api-request";
 import { getZodErrorMessages } from "@/utils/get-zod-errors";
 import { simulateLag } from "@/utils/simulate-lag";
+import { verifyHoneypotInput } from "@/utils/verify-honeypot-input";
 import { redirect } from "next/navigation";
 
 type CreateUserActionState = {
@@ -19,7 +20,16 @@ export async function createUserAction(
   state: CreateUserActionState,
   formData: FormData
 ): Promise<CreateUserActionState> {
-  await simulateLag(3000);
+  const isBot = await verifyHoneypotInput(formData, 5000);
+
+  if (isBot) {
+    return {
+      user: state.user,
+      errors: ["Te peguei, bot imundo"],
+      success: false,
+    };
+  }
+
   if (!(formData instanceof FormData)) {
     return {
       user: state.user,

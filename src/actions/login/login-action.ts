@@ -4,7 +4,7 @@ import { createLoginSessionFromApi } from "@/lib/login/manage-login";
 import { LoginSchema } from "@/lib/login/schemas";
 import { apiRequest } from "@/utils/api-request";
 import { getZodErrorMessages } from "@/utils/get-zod-errors";
-import { simulateLag } from "@/utils/simulate-lag";
+import { verifyHoneypotInput } from "@/utils/verify-honeypot-input";
 import { redirect } from "next/navigation";
 
 type LoginActionState = {
@@ -22,7 +22,14 @@ export async function loginAction(state: LoginActionState, formData: FormData) {
     };
   }
 
-  await simulateLag(5000); // para atrasar ataques de força bruta
+  const isBot = await verifyHoneypotInput(formData, 5000);
+
+  if (isBot) {
+    return {
+      email: "",
+      errors: ["Te peguei, bot imundo"],
+    };
+  }
 
   if (!(formData instanceof FormData)) {
     return {
