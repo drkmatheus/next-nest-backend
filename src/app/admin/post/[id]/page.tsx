@@ -1,6 +1,11 @@
 import { PostForm } from "@/components/admin/PostForm";
 import { postDTO } from "@/dto/post/postdto";
-import { findPostById } from "@/lib/post/queries/admin";
+import {
+  findAllPostFromApi,
+  findPostById,
+  findPostByIdFromApi,
+} from "@/lib/post/queries/admin";
+import { PublishedPostForApiSchema } from "@/lib/post/schemas";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -18,16 +23,20 @@ export default async function AdminPostIdPage({
   params,
 }: AdminPostIdPageProps) {
   const { id } = await params;
-  const postFound = await findPostById(id).catch(() => undefined);
+  const postFound = await findPostByIdFromApi(id);
 
-  if (!postFound) notFound();
+  if (!postFound.success) {
+    console.log(postFound.errors);
+    notFound();
+  }
 
-  const postDto = postDTO(postFound);
+  const post = postFound.data;
+  const publishedPost = PublishedPostForApiSchema.parse(post);
 
   return (
     <div className="flex flex-col gap-6">
       <h1 className="text-xl font-bold">Editar post</h1>
-      <PostForm mode="update" postDTO={postDto} />
+      <PostForm mode="update" postDTO={publishedPost} />
     </div>
   );
 }

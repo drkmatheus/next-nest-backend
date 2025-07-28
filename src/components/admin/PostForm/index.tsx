@@ -5,11 +5,14 @@ import { InputText } from "@/components/InputText";
 import { MarkdownEditorField } from "@/components/MarkdownEditorField";
 import { useActionState, useEffect, useState } from "react";
 import { ImageUploader } from "../ImageUploader";
-import { partialPostDTO, PostDto } from "@/dto/post/postdto";
 import { createPostAction } from "@/actions/post/create-post-action";
 import { toast } from "react-toastify";
 import { updatePostAction } from "@/actions/post/update-post-action";
 import { useRouter, useSearchParams } from "next/navigation";
+import {
+  PublishedPostForApiDto,
+  PublishedPostForApiSchema,
+} from "@/lib/post/schemas";
 
 type PostFormCreateProps = {
   mode: "create";
@@ -17,7 +20,7 @@ type PostFormCreateProps = {
 
 type PostFormUpdateProps = {
   mode: "update";
-  postDTO: PostDto;
+  postDTO: PublishedPostForApiDto;
 };
 
 type PostFormProps = PostFormUpdateProps | PostFormCreateProps;
@@ -39,7 +42,7 @@ export function PostForm(props: PostFormProps) {
   };
 
   const initialState = {
-    formState: partialPostDTO(postDto),
+    formState: PublishedPostForApiSchema.parse(postDto || {}),
     errors: [],
   };
 
@@ -98,15 +101,6 @@ export function PostForm(props: PostFormProps) {
         />
 
         <InputText
-          labelText="Autor"
-          name="author"
-          type="text"
-          placeholder="Digite o nome do autor"
-          disabled={isPending}
-          defaultValue={formState.author}
-        />
-
-        <InputText
           labelText="Título"
           name="title"
           type="text"
@@ -139,13 +133,15 @@ export function PostForm(props: PostFormProps) {
           disabled={isPending}
           defaultValue={formState.coverImageUrl}
         />
-        <InputCheckbox
-          labeltext="Publicar?"
-          name="published"
-          type="checkbox"
-          disabled={isPending}
-          defaultChecked={formState.published || false}
-        />
+        {mode === "update" && (
+          <InputCheckbox
+            labeltext="Publicar?"
+            name="published"
+            type="checkbox"
+            disabled={isPending}
+            defaultChecked={formState.published || false}
+          />
+        )}
       </div>
       <div className="mt-4">
         <Button disabled={isPending} type="submit">

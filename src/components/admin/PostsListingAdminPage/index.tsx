@@ -1,11 +1,20 @@
 import { ErrorMessage } from "@/components/ErrorMessage";
-import { findAllPosts } from "@/lib/post/queries/admin";
+import { findAllPostFromApi } from "@/lib/post/queries/admin";
 import clsx from "clsx";
 import Link from "next/link";
 import { DeletePostButton } from "../DeletePostButton";
 
 export async function PostsListingAdminPage() {
-  const posts = await findAllPosts();
+  const postsRes = await findAllPostFromApi();
+
+  if (!postsRes.success) {
+    console.log(postsRes.errors);
+    return (
+      <ErrorMessage contentTitle="Hey!🧚🏻‍♀️" content="Faça login novamente! 🪧" />
+    );
+  }
+
+  const posts = postsRes.data;
 
   if (posts.length <= 0) {
     return (
