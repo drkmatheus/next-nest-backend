@@ -1,3 +1,4 @@
+import { UpdateUserPassword } from "@/components/admin/UpdateUserPassword";
 import { MyLoader } from "@/components/MyLoader";
 import { Metadata } from "next";
 import { Suspense } from "react";
@@ -9,5 +10,9 @@ export const metadata: Metadata = {
 };
 
 export default async function UserUpdatePasswordPage() {
-  return <Suspense fallback={<MyLoader containerClasses="mb-16" />}></Suspense>;
+  return (
+    <Suspense fallback={<MyLoader containerClasses="mb-16" />}>
+      <UpdateUserPassword />
+    </Suspense>
+  );
 }
